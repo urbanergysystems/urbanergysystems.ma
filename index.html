@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Urbanergy Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#060a12;
+  --paper:#f5f3ee;
+  --blue:#0047ff;
+  --electric:#00e5ff;
+  --warm:#f0ebe0;
+  --muted:#9a9a9a;
+  --border:rgba(0,0,0,.08);
+}
+html{scroll-behavior:smooth;cursor:none}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
+
+/* custom cursor */
+#cursor{
+  position:fixed;width:12px;height:12px;background:var(--blue);
+  border-radius:50%;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;
+  mix-blend-mode:multiply;
+}
+#cursor-ring{
+  position:fixed;width:40px;height:40px;border:1.5px solid var(--blue);
+  border-radius:50%;pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);opacity:.4;
+  transition:width .4s cubic-bezier(.2,.8,.2,1),height .4s cubic-bezier(.2,.8,.2,1),opacity .3s;
+}
+body:has(a:hover) #cursor,body:has(button:hover) #cursor{width:20px;height:20px;background:var(--electric)}
+body:has(a:hover) #cursor-ring,body:has(button:hover) #cursor-ring{width:60px;height:60px;opacity:.15}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4%;height:64px;
+  background:rgba(245,243,238,.88);
+  backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;
+  letter-spacing:-.02em;color:var(--ink);text-decoration:none;
+}
+.nav-logo b{color:var(--blue)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:.82rem;
+  font-weight:500;letter-spacing:.04em;text-transform:uppercase;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  background:var(--ink);color:var(--paper);
+  border:none;padding:.55rem 1.4rem;border-radius:100px;
+  font-family:'DM Sans',sans-serif;font-weight:500;font-size:.82rem;
+  letter-spacing:.02em;cursor:none;text-decoration:none;
+  transition:background .25s,transform .2s;
+}
+.nav-cta:hover{background:var(--blue);transform:scale(1.03)}
+
+/* HERO */
+#hero{
+  min-height:100vh;display:grid;
+  grid-template-rows:1fr auto;
+  padding:140px 4% 80px;
+  position:relative;overflow:hidden;
+  background:var(--paper);
+}
+.hero-noise{
+  position:absolute;inset:0;opacity:.03;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;
+}
+.hero-line{
+  position:absolute;top:0;left:50%;width:1px;height:100%;
+  background:linear-gradient(to bottom,transparent,var(--border),transparent);
+}
+.hero-number{
+  position:absolute;top:140px;right:4%;
+  font-family:'Syne',sans-serif;font-size:clamp(120px,18vw,220px);
+  font-weight:800;color:transparent;
+  -webkit-text-stroke:1px rgba(0,0,0,.06);
+  line-height:1;letter-spacing:-.04em;
+  user-select:none;pointer-events:none;
+}
+.hero-top{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;
+}
+@media(max-width:768px){.hero-top{grid-template-columns:1fr}.hero-number{display:none}.nav-links{display:none}}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:.75rem;
+  font-size:.72rem;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1.8rem;
+}
+.hero-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.8rem,6vw,5.5rem);
+  font-weight:800;line-height:1.02;
+  letter-spacing:-.03em;
+}
+h1 .stroke{
+  -webkit-text-stroke:2px var(--ink);
+  color:transparent;
+}
+h1 .blue{color:var(--blue)}
+.hero-right{padding-bottom:.5rem}
+.hero-desc{
+  font-size:1.05rem;line-height:1.75;color:#555;
+  font-weight:300;margin-bottom:2.2rem;
+  border-left:2px solid var(--blue);padding-left:1.2rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-dark{
+  background:var(--ink);color:var(--paper);
+  padding:.8rem 2rem;border-radius:100px;border:none;
+  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;
+  cursor:none;text-decoration:none;display:inline-block;
+  transition:background .25s,transform .2s;letter-spacing:.01em;
+}
+.btn-dark:hover{background:var(--blue);transform:translateY(-2px)}
+.btn-outline{
+  background:transparent;color:var(--ink);
+  padding:.8rem 2rem;border-radius:100px;
+  border:1.5px solid rgba(0,0,0,.2);
+  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;
+  cursor:none;text-decoration:none;display:inline-block;
+  transition:border-color .25s,color .25s,transform .2s;letter-spacing:.01em;
+}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+
+.hero-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:3rem;border-top:1px solid var(--border);
+  flex-wrap:wrap;gap:1rem;
+}
+.hero-scroll{
+  display:flex;align-items:center;gap:.8rem;
+  font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.scroll-arrow{
+  width:36px;height:36px;border:1px solid var(--border);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  animation:bob 2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+.hero-tags{display:flex;gap:.6rem;flex-wrap:wrap}
+.tag{
+  background:var(--warm);color:var(--muted);
+  padding:.3rem .85rem;border-radius:100px;
+  font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid var(--border);
+}
+
+/* MARQUEE */
+.marquee-wrap{
+  background:var(--ink);color:var(--paper);
+  padding:1rem 0;overflow:hidden;white-space:nowrap;
+}
+.marquee-track{
+  display:inline-block;
+  animation:marquee 20s linear infinite;
+}
+.marquee-track span{
+  font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:0 2rem;
+}
+.marquee-track span.dot{color:var(--blue)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SERVICES */
+#services{padding:100px 4%}
+.section-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem;
+}
+.section-label{
+  font-size:.72rem;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:.6rem;
+}
+.section-h2{
+  font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:800;letter-spacing:-.03em;line-height:1.1;
+}
+.section-h2 em{font-style:normal;color:var(--blue)}
+.section-note{color:var(--muted);font-size:.9rem;max-width:320px;text-align:right;line-height:1.6}
+@media(max-width:600px){.section-note{text-align:left}}
+
+.services-list{display:flex;flex-direction:column;gap:0}
+.service-row{
+  display:grid;grid-template-columns:60px 1fr auto;
+  align-items:center;gap:2rem;
+  padding:2rem 0;
+  border-bottom:1px solid var(--border);
+  position:relative;
+  cursor:none;
+  transition:padding-left .3s;
+}
+.service-row::after{
+  content:'';position:absolute;left:0;bottom:0;top:0;width:0;
+  background:var(--blue);opacity:.04;
+  transition:width .4s cubic-bezier(.2,.8,.2,1);
+}
+.service-row:hover::after{width:100%}
+.service-row:hover{padding-left:1rem}
+.srv-num{
+  font-family:'Syne',sans-serif;font-size:.8rem;
+  font-weight:700;color:var(--muted);letter-spacing:.05em;
+}
+.srv-body h3{
+  font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:700;
+  letter-spacing:-.02em;margin-bottom:.35rem;
+  transition:color .3s;
+}
+.service-row:hover h3{color:var(--blue)}
+.srv-body p{color:var(--muted);font-size:.88rem;line-height:1.6}
+.srv-icon{
+  font-size:2rem;width:56px;height:56px;
+  background:var(--warm);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);flex-shrink:0;
+  transition:background .3s,transform .3s;
+}
+.service-row:hover .srv-icon{background:var(--blue);transform:rotate(-6deg) scale(1.08)}
+
+/* WHY */
+#why{
+  background:var(--ink);color:var(--paper);
+  padding:100px 4%;position:relative;overflow:hidden;
+}
+.why-bg-text{
+  position:absolute;bottom:-2rem;left:3%;
+  font-family:'Syne',sans-serif;font-size:clamp(80px,14vw,180px);
+  font-weight:800;color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.04);
+  white-space:nowrap;pointer-events:none;
+}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr 1fr;
+  gap:1px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;overflow:hidden;
+}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.why-grid{grid-template-columns:1fr}}
+.why-card{
+  background:var(--ink);padding:2.5rem 2rem;
+  transition:background .3s;
+  position:relative;overflow:hidden;
+}
+.why-card:hover{background:#0d1526}
+.why-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--electric));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.why-card:hover::before{transform:scaleX(1)}
+.why-icon{font-size:2rem;margin-bottom:1.4rem}
+.why-card h4{
+  font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;
+  letter-spacing:-.01em;margin-bottom:.6rem;
+}
+.why-card p{color:rgba(255,255,255,.45);font-size:.85rem;line-height:1.65}
+
+/* NUMBERS */
+#numbers{
+  padding:80px 4%;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:0;border-bottom:1px solid var(--border);
+}
+.num-card{
+  padding:3rem 2rem;border-right:1px solid var(--border);
+  text-align:center;
+}
+.num-card:last-child{border-right:none}
+@media(max-width:600px){.num-card{border-right:none;border-bottom:1px solid var(--border)}}
+.num-val{
+  font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;
+  letter-spacing:-.04em;color:var(--blue);line-height:1;
+  margin-bottom:.4rem;
+}
+.num-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+
+/* CONTACT */
+#contact{padding:100px 4%}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;
+}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:3rem}}
+.contact-info-list{display:flex;flex-direction:column;gap:.6rem;margin-top:2.5rem}
+.ci{
+  display:flex;align-items:center;gap:1rem;
+  padding:1.1rem 1.3rem;
+  border:1.5px solid var(--border);border-radius:10px;
+  transition:border-color .25s,transform .25s;
+}
+.ci:hover{border-color:var(--blue);transform:translateX(4px)}
+.ci-icon{
+  width:38px;height:38px;background:var(--warm);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;border:1px solid var(--border);
+}
+.ci small{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.15rem}
+.ci span{font-size:.92rem;font-weight:500}
+.ci a{color:var(--ink);text-decoration:none}
+.ci a:hover{color:var(--blue)}
+
+.form{display:flex;flex-direction:column;gap:1.1rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:500px){.frow{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:.5rem}
+.fg label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500}
+.fg input,.fg textarea,.fg select{
+  background:var(--warm);
+  border:1.5px solid var(--border);
+  border-radius:10px;padding:.8rem 1.1rem;
+  color:var(--ink);font-family:'DM Sans',sans-serif;font-size:.95rem;
+  outline:none;transition:border-color .25s,box-shadow .25s;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 4px rgba(0,71,255,.06);
+}
+.fg textarea{resize:vertical;min-height:120px}
+.fg select option{background:var(--paper)}
+.btn-submit{
+  background:var(--ink);color:var(--paper);border:none;
+  padding:1rem;border-radius:10px;
+  font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;
+  letter-spacing:.02em;cursor:none;
+  transition:background .25s,transform .2s;
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+}
+.btn-submit:hover{background:var(--blue);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{
+  background:var(--ink);color:rgba(255,255,255,.4);
+  padding:2rem 4%;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.fl{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:1rem;color:var(--paper);letter-spacing:-.02em;
+}
+.fl b{color:var(--blue)}
+.ft{font-style:italic;font-size:.82rem;color:rgba(255,255,255,.35)}
+.fc{font-size:.75rem}
+
+/* FADE */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">URBAN<b>ERGY</b> SYSTEMS</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Devis gratuit</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-line"></div>
+  <div class="hero-number">US</div>
+
+  <div class="hero-top">
+    <div class="reveal">
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Casablanca, Maroc · 2025</div>
+      <h1>Solutions<br><span class="stroke">intelligentes</span><br>pour un avenir<br><span class="blue">performant</span></h1>
+    </div>
+    <div class="hero-right reveal" style="transition-delay:.15s">
+      <p class="hero-desc">
+        Urbanergy Systems vous accompagne avec des <strong>solutions innovantes, fiables et durables</strong> — de l'installation électrique à l'aménagement d'intérieur.
+      </p>
+      <div class="hero-btns">
+        <a class="btn-dark" href="#services">Découvrir nos services</a>
+        <a class="btn-outline" href="#contact">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom reveal" style="transition-delay:.3s">
+    <div class="hero-scroll">
+      <div class="scroll-arrow">↓</div>
+      Défiler pour découvrir
+    </div>
+    <div class="hero-tags">
+      <span class="tag">⚡ Électricité</span>
+      <span class="tag">❄️ Climatisation</span>
+      <span class="tag">🖥️ Informatique</span>
+      <span class="tag">🏠 Intérieur</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Installation Électrique</span><span class="dot">✦</span>
+    <span>Climatisations</span><span class="dot">✦</span>
+    <span>Matériel Informatique</span><span class="dot">✦</span>
+    <span>Travaux Divers</span><span class="dot">✦</span>
+    <span>Aménagement d'Intérieur</span><span class="dot">✦</span>
+    <span>Vente Matériel</span><span class="dot">✦</span>
+    <span>Installation Électrique</span><span class="dot">✦</span>
+    <span>Climatisations</span><span class="dot">✦</span>
+    <span>Matériel Informatique</span><span class="dot">✦</span>
+    <span>Travaux Divers</span><span class="dot">✦</span>
+    <span>Aménagement d'Intérieur</span><span class="dot">✦</span>
+    <span>Vente Matériel</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- NUMBERS -->
+<div id="numbers">
+  <div class="num-card reveal"><div class="num-val">6+</div><div class="num-label">Domaines d'expertise</div></div>
+  <div class="num-card reveal" style="transition-delay:.1s"><div class="num-val">100%</div><div class="num-label">Solutions sur mesure</div></div>
+  <div class="num-card reveal" style="transition-delay:.2s"><div class="num-val">Casa</div><div class="num-label">Basé à Casablanca</div></div>
+  <div class="num-card reveal" style="transition-delay:.3s"><div class="num-val">24h</div><div class="num-label">Réactivité garantie</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-label">Ce que nous faisons</div>
+      <div class="section-h2">Nos domaines<br>d'<em>expertise</em></div>
+    </div>
+    <div class="section-note">Des prestations complètes pour particuliers, entreprises et collectivités.</div>
+  </div>
+
+  <div class="services-list">
+    <div class="service-row reveal">
+      <div class="srv-num">01</div>
+      <div class="srv-body">
+        <h3>Installation Électrique</h3>
+        <p>Études, installation et mise en conformité de tous vos réseaux électriques.</p>
+      </div>
+      <div class="srv-icon">⚡</div>
+    </div>
+    <div class="service-row reveal" style="transition-delay:.06s">
+      <div class="srv-num">02</div>
+      <div class="srv-body">
+        <h3>Climatisations</h3>
+        <p>Installation, entretien et dépannage de systèmes de climatisation toutes marques.</p>
+      </div>
+      <div class="srv-icon">❄️</div>
+    </div>
+    <div class="service-row reveal" style="transition-delay:.12s">
+      <div class="srv-num">03</div>
+      <div class="srv-body">
+        <h3>Matériel Informatique</h3>
+        <p>Solutions informatiques et équipements adaptés à votre activité professionnelle.</p>
+      </div>
+      <div class="srv-icon">🖥️</div>
+    </div>
+    <div class="service-row reveal" style="transition-delay:.18s">
+      <div class="srv-num">04</div>
+      <div class="srv-body">
+        <h3>Travaux Divers</h3>
+        <p>Maintenance, dépannage et interventions multitechniques. Équipe réactive.</p>
+      </div>
+      <div class="srv-icon">🔧</div>
+    </div>
+    <div class="service-row reveal" style="transition-delay:.24s">
+      <div class="srv-num">05</div>
+      <div class="srv-body">
+        <h3>Vente de Matériel</h3>
+        <p>Fourniture de matériel informatique de qualité aux meilleurs prix du marché.</p>
+      </div>
+      <div class="srv-icon">🛒</div>
+    </div>
+    <div class="service-row reveal" style="transition-delay:.30s">
+      <div class="srv-num">06</div>
+      <div class="srv-body">
+        <h3>Aménagement d'Intérieur</h3>
+        <p>Conception et réalisation d'espaces modernes et fonctionnels sur mesure.</p>
+      </div>
+      <div class="srv-icon">🏠</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="why-bg-text">URBANERGY</div>
+  <div class="section-head reveal" style="margin-bottom:3rem">
+    <div>
+      <div class="section-label" style="color:rgba(0,229,255,.7)">Nos engagements</div>
+      <div class="section-h2" style="color:var(--paper)">Pourquoi nous<br>choisir<em style="color:var(--electric)"> ?</em></div>
+    </div>
+    <div class="section-note" style="color:rgba(255,255,255,.4)">"L'énergie de demain,<br>au service d'aujourd'hui."</div>
+  </div>
+  <div class="why-grid reveal" style="transition-delay:.1s">
+    <div class="why-card">
+      <div class="why-icon">🛡️</div>
+      <h4>Expertise & Savoir-faire</h4>
+      <p>Une équipe qualifiée et expérimentée, prête à relever tous vos défis techniques.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <h4>Qualité & Fiabilité</h4>
+      <p>Des solutions durables et performantes avec des garanties sur chaque prestation.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🤝</div>
+      <h4>Accompagnement personnalisé</h4>
+      <p>À chaque projet, une solution sur mesure adaptée à vos besoins et votre budget.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📈</div>
+      <h4>Performance & Innovation</h4>
+      <p>Des équipements et méthodes à la pointe de la technologie actuelle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-head reveal" style="margin-bottom:3.5rem">
+    <div>
+      <div class="section-label">Parlons de votre projet</div>
+      <div class="section-h2">Contactez-<em>nous</em></div>
+    </div>
+    <div class="section-note">Devis gratuit · Réponse sous 24h</div>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <p style="color:var(--muted);font-size:.95rem;line-height:1.7;margin-bottom:1rem">Notre équipe est disponible pour répondre à toutes vos questions et vous proposer un devis gratuit et sans engagement.</p>
+      <div class="contact-info-list">
+        <div class="ci">
+          <div class="ci-icon">📞</div>
+          <div><small>Téléphone</small><span><a href="tel:00212660032554">00 212 6 60 03 25 54</a></span></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">✉️</div>
+          <div><small>Email</small><span><a href="mailto:clientele@urbanergysystems.ma">clientele@urbanergysystems.ma</a></span></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">📍</div>
+          <div><small>Adresse</small><span>20 Rue Jules César, Étage 3 N°32<br>Roches Noires, Casablanca</span></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">🌐</div>
+          <div><small>Site web</small><span><a href="https://urbanergysystems.ma">urbanergysystems.ma</a></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="form">
+        <div class="frow">
+          <div class="fg"><label>Nom complet</label><input type="text" placeholder="Votre nom"/></div>
+          <div class="fg"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"/></div>
+        </div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="votre@email.com"/></div>
+        <div class="fg">
+          <label>Service</label>
+          <select>
+            <option value="">Choisir un service...</option>
+            <option>Installation Électrique</option>
+            <option>Climatisations</option>
+            <option>Matériel Informatique</option>
+            <option>Travaux Divers</option>
+            <option>Vente de Matériel</option>
+            <option>Aménagement d'Intérieur</option>
+          </select>
+        </div>
+        <div class="fg"><label>Message</label><textarea placeholder="Décrivez votre projet..."></textarea></div>
+        <button class="btn-submit" onclick="alert('Merci ! Nous vous contacterons dans les 24h.')">
+          Envoyer ma demande <span>→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="fl">URBAN<b>ERGY</b> SYSTEMS</div>
+    <div class="ft">L'énergie de demain, au service d'aujourd'hui.</div>
+  </div>
+  <div class="fc">© 2025 Urbanergy Systems · Casablanca, Maroc</div>
+</footer>
+
+<script>
+// Cursor
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+
+// Reveal on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('in'),i*60)});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
