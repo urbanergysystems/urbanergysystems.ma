@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>URBANERGY SYSTEMS | Climatisation, Génie Climatique & Maintenance</title>
-  <meta name="description" content="Solutions complètes en climatisation industrielle, tertiaire et résidentielle, travaux tout corps d'état et maintenance technique à Casablanca et au Maroc.">
-  
+  <title>URBANERGY SYSTEMS | Climatisation, Électricité & Services Techniques</title>
+  <meta name="description" content="Solutions complètes en génie climatique, électricité, informatique, aménagement et maintenance technique à Casablanca et au Maroc.">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Inter -->
@@ -30,7 +30,7 @@
               600: '#2563eb',
               700: '#1d4ed8',
               800: '#1e40af',
-              900: '#0f172a',
+              900: '#0b132b',
             },
             accent: {
               400: '#38bdf8',
@@ -46,29 +46,23 @@
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
   <!-- En-tête / Barre de navigation -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Logo officiel -->
       <a href="#" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-accent-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
-          <i data-lucide="fan" class="w-6 h-6"></i>
-        </div>
-        <div class="leading-tight">
-          <span class="block text-xl font-extrabold tracking-tight text-slate-900">URBANERGY</span>
-          <span class="block text-xs font-semibold uppercase tracking-wider text-accent-600">SYSTEMS</span>
-        </div>
+        <img src="logo.png" alt="URBANERGY SYSTEMS" class="h-12 w-auto object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/160x50?text=URBANERGY+SYSTEMS';">
       </a>
 
-      <!-- Menu Navigation Desktop -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="#services" class="hover:text-brand-600 transition">Services</a>
-        <a href="#expertises" class="hover:text-brand-600 transition">Expertises</a>
-        <a href="#a-propos" class="hover:text-brand-600 transition">À Propos</a>
+      <!-- Menu Navigation (Uniquement Services et Contact) -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+        <a href="#services" class="hover:text-brand-600 transition">Nos Services</a>
         <a href="#contact" class="hover:text-brand-600 transition">Contact</a>
       </nav>
 
-      <!-- Bouton Devis / Contact rapide -->
-      <div class="hidden sm:flex items-center gap-4">
-        <a href="https://wa.me/212660032554" target="_blank" class="inline-flex items-center gap-2 bg-brand-700 hover:bg-brand-800 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md shadow-brand-700/20 transition-all hover:-translate-y-0.5">
+      <!-- Bouton WhatsApp En-tête -->
+      <div class="flex items-center gap-4">
+        <a href="https://wa.me/212660032554" target="_blank" class="inline-flex items-center gap-2 bg-brand-700 hover:bg-brand-800 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md shadow-brand-700/20 transition hover:-translate-y-0.5">
           <i data-lucide="phone-call" class="w-4 h-4"></i>
           <span>Demander un devis</span>
         </a>
@@ -76,34 +70,33 @@
     </div>
   </header>
 
-  <!-- Hero Section (Bannière Principale) -->
-  <section class="pt-36 pb-20 md:pt-44 md:pb-32 bg-gradient-to-b from-brand-50/60 via-white to-slate-50 relative overflow-hidden">
+  <!-- Bannière Principale -->
+  <section class="pt-36 pb-20 md:pt-44 md:pb-28 bg-gradient-to-b from-brand-50/70 via-white to-slate-50 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100/60 text-brand-800 text-xs font-semibold uppercase tracking-wider">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100/70 text-brand-800 text-xs font-semibold tracking-wide uppercase">
             <span class="w-2 h-2 rounded-full bg-accent-500 animate-pulse"></span>
-            Génie Climatique & Maintenance Technique
+            Génie Climatique & Solutions Multi-techniques
           </div>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-950 tracking-tight leading-[1.15]">
-            L'efficacité thermique & la <span class="bg-gradient-to-r from-brand-700 to-accent-500 bg-clip-text text-transparent">performance énergétique</span> au service de vos espaces.
+            L'efficacité technique & la <span class="bg-gradient-to-r from-brand-700 to-accent-500 bg-clip-text text-transparent">performance énergétique</span> au service de vos espaces.
           </h1>
           <p class="text-lg text-slate-600 max-w-2xl font-normal leading-relaxed">
-            URBANERGY SYSTEMS accompagne les professionnels et particuliers dans l'étude, l'installation et la maintenance de solutions complètes de climatisation, ventilation et travaux généraux.
+            URBANERGY SYSTEMS accompagne les professionnels et particuliers dans l'étude, l'installation et la maintenance de solutions complètes de climatisation, électricité et aménagement.
           </p>
 
-          <div class="flex flex-col sm:flex-row gap-4 pt-4">
-            <a href="https://wa.me/212600000000" target="_blank" class="inline-flex items-center justify-center gap-3 bg-brand-700 hover:bg-brand-800 text-white px-7 py-3.5 rounded-xl font-semibold shadow-lg shadow-brand-700/25 transition">
+          <div class="flex flex-col sm:flex-row gap-4 pt-2">
+            <a href="https://wa.me/212660032554" target="_blank" class="inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-3.5 rounded-xl font-semibold shadow-lg shadow-emerald-600/25 transition">
               <i data-lucide="message-square" class="w-5 h-5"></i>
               <span>Échanger sur WhatsApp</span>
             </a>
             <a href="#services" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 px-7 py-3.5 rounded-xl font-semibold transition">
-              <span>Découvrir nos solutions</span>
+              <span>Découvrir nos services</span>
               <i data-lucide="arrow-down" class="w-4 h-4 text-slate-500"></i>
             </a>
           </div>
 
-          <!-- Points forts réassurance -->
           <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-200">
             <div>
               <p class="text-2xl font-bold text-slate-900">24/7</p>
@@ -111,7 +104,7 @@
             </div>
             <div>
               <p class="text-2xl font-bold text-slate-900">100%</p>
-              <p class="text-xs text-slate-500">Conforme aux normes</p>
+              <p class="text-xs text-slate-500">Normes conformes</p>
             </div>
             <div>
               <p class="text-2xl font-bold text-slate-900">Casablanca</p>
@@ -122,11 +115,11 @@
 
         <div class="lg:col-span-5 relative">
           <div class="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900">
-            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200&auto=format&fit=crop" alt="Climatisation et installation technique" class="w-full h-[450px] object-cover opacity-90">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200&auto=format&fit=crop" alt="Services techniques URBANERGY" class="w-full h-[440px] object-cover opacity-90">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white">
-              <p class="font-bold text-sm">Expertise Multimarque</p>
-              <p class="text-xs text-slate-200 mt-0.5">Étude thermique, pose et contrats d'entretien préventif sur-mesure.</p>
+              <p class="font-bold text-sm">Engagement Qualité</p>
+              <p class="text-xs text-slate-200 mt-0.5">Étude, pose soignée et contrats de maintenance sur-mesure.</p>
             </div>
           </div>
         </div>
@@ -134,71 +127,100 @@
     </div>
   </section>
 
-  <!-- Section Nos Domaines de Services -->
+  <!-- Section Nos Domaines d'Expertise (6 Services) -->
   <section id="services" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600">Nos Métiers</h2>
-        <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-950">Des prestations complètes pour chaque infrastructure</h3>
-        <p class="text-slate-600">De l'ingénierie d'installation au dépannage sur site, nous assurons la continuité de vos installations thermiques.</p>
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600">Nos Domaines d'Expertise</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-950">Des solutions complètes pour chaque infrastructure</h3>
+        <p class="text-slate-600 text-sm">Une prise en charge globale de vos installations techniques par des spécialistes qualifiés.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Carte 1 -->
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-500 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center mb-6">
-            <i data-lucide="building-2" class="w-6 h-6"></i>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- 1. Installation Électrique -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center mb-6 shadow-md">
+            <i data-lucide="zap" class="w-7 h-7"></i>
           </div>
-          <h4 class="text-xl font-bold text-slate-900 mb-3">Tertiaire & Industriel</h4>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">Systèmes VRV / VRF, centrales de traitement d’air (CTA), groupes d’eau glacée et réseaux de gaines de désenfumage.</p>
-          <ul class="text-xs text-slate-500 space-y-2 font-medium">
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i> Bâtiments administratifs</li>
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i> Plateaux de bureaux</li>
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i> Entrepôts logistiques</li>
-          </ul>
+          <h4 class="text-lg font-bold uppercase tracking-wide text-slate-900 mb-2">Installation Électrique</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Études, installation et mise en conformité de tous vos réseaux électriques moyenne et basse tension.
+          </p>
         </div>
 
-        <!-- Carte 2 -->
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-500 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 rounded-xl bg-accent-100 text-accent-600 flex items-center justify-center mb-6">
-            <i data-lucide="home" class="w-6 h-6"></i>
+        <!-- 2. Climatisations -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-brand-600 text-white flex items-center justify-center mb-6 shadow-md">
+            <i data-lucide="snowflake" class="w-7 h-7"></i>
           </div>
-          <h4 class="text-xl font-bold text-slate-900 mb-3">Résidentiel & Commercial</h4>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">Installation de climatisation multi-split, gainable discrète et cassettes pour villas, appartements et commerces.</p>
-          <ul class="text-xs text-slate-500 space-y-2 font-medium">
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i> Climatisation gainable invisible</li>
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i> Économies d'énergie Inverter</li>
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i> Diffusion silencieuse</li>
-          </ul>
+          <h4 class="text-lg font-bold uppercase tracking-wide text-slate-900 mb-2">Climatisations</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Installation, entretien et dépannage de systèmes de climatisation (VRV, gainable, split, CTA).
+          </p>
         </div>
 
-        <!-- Carte 3 -->
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-500 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6">
-            <i data-lucide="wrench" class="w-6 h-6"></i>
+        <!-- 3. Matériel Informatique -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-sky-500 text-white flex items-center justify-center mb-6 shadow-md">
+            <i data-lucide="monitor" class="w-7 h-7"></i>
           </div>
-          <h4 class="text-xl font-bold text-slate-900 mb-3">Maintenance & Travaux</h4>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">Contrats d’entretien périodique, détection de fuite de fluide frigorigène, révision générale et travaux tous corps d’état.</p>
-          <ul class="text-xs text-slate-500 space-y-2 font-medium">
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i> Maintenance curative d’urgence</li>
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i> Nettoyage antibactérien</li>
-            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-brand-600"></i> Recharges en fluide réglementaire</li>
-          </ul>
+          <h4 class="text-lg font-bold uppercase tracking-wide text-slate-900 mb-2">Matériel Informatique</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Infrastructure réseau, câblage structuré et solutions informatiques adaptées à votre activité professionnelle.
+          </p>
         </div>
+
+        <!-- 4. Travaux Divers -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-slate-800 text-white flex items-center justify-center mb-6 shadow-md">
+            <i data-lucide="wrench" class="w-7 h-7"></i>
+          </div>
+          <h4 class="text-lg font-bold uppercase tracking-wide text-slate-900 mb-2">Travaux Divers</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Maintenance préventive, dépannage urgent et interventions multitechniques tous corps d'état.
+          </p>
+        </div>
+
+        <!-- 5. Vente de Matériel Informatique -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center mb-6 shadow-md">
+            <i data-lucide="shopping-cart" class="w-7 h-7"></i>
+          </div>
+          <h4 class="text-lg font-bold uppercase tracking-wide text-slate-900 mb-2">Vente Matériel Informatique</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Fourniture et vente d'équipements informatiques, serveurs et accessoires de haute qualité aux meilleurs prix.
+          </p>
+        </div>
+
+        <!-- 6. Aménagement d'Intérieur -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center mb-6 shadow-md">
+            <i data-lucide="armchair" class="w-7 h-7"></i>
+          </div>
+          <h4 class="text-lg font-bold uppercase tracking-wide text-slate-900 mb-2">Aménagement d'Intérieur</h4>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Conception et réalisation d'espaces intérieurs, cloisons, faux plafonds modernes et fonctionnels.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Section Contact & Localisation -->
+  <!-- Section Contact & Coordonnées -->
   <section id="contact" class="py-24 bg-slate-900 text-white">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-12 gap-12">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Bloc Infos -->
         <div class="lg:col-span-6 space-y-6">
           <h2 class="text-xs font-bold uppercase tracking-widest text-accent-400">Contact & Devis</h2>
           <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Un projet d'installation ou un besoin de maintenance ?</h3>
-          <p class="text-slate-300">Nos techniciens se déplacent sur site pour évaluer vos besoins et vous délivrer un devis détaillé sous 24 à 48 heures.</p>
+          <p class="text-slate-300 leading-relaxed">Nos techniciens se déplacent sur site pour évaluer vos besoins et vous délivrer un devis détaillé sous 24 à 48 heures.</p>
           
-          <div class="space-y-4 pt-4">
+          <div class="space-y-5 pt-4">
+            <!-- Adresse -->
             <div class="flex items-start gap-4">
               <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 text-accent-400">
                 <i data-lucide="map-pin" class="w-5 h-5"></i>
@@ -209,26 +231,40 @@
               </div>
             </div>
 
+            <!-- E-mail -->
             <div class="flex items-start gap-4">
               <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 text-accent-400">
                 <i data-lucide="mail" class="w-5 h-5"></i>
               </div>
               <div>
                 <p class="font-bold text-sm">Adresse E-mail :</p>
-                <p class="text-sm text-slate-300">clientele@urbanergysystems.ma</p>
+                <a href="mailto:clientele@urbanergysystems.ma" class="text-sm text-slate-300 hover:text-white transition">clientele@urbanergysystems.ma</a>
+              </div>
+            </div>
+
+            <!-- GSM & WhatsApp (Ajouté dessous l'adresse e-mail) -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 text-emerald-400">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="font-bold text-sm">GSM et WhatsApp :</p>
+                <a href="https://wa.me/212660032554" target="_blank" class="text-sm text-emerald-400 hover:underline font-medium">+212 660-032554</a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="lg:col-span-6 bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-          <h4 class="text-xl font-bold mb-4">Contact Direct</h4>
-          <p class="text-sm text-slate-300 mb-6">Pour une réponse immédiate ou une intervention urgente, écrivez-nous directement sur WhatsApp :</p>
+        <!-- Bloc Contact Direct -->
+        <div class="lg:col-span-6 bg-white/5 border border-white/10 p-8 sm:p-10 rounded-3xl backdrop-blur-sm">
+          <h4 class="text-2xl font-bold mb-3">Contact Direct</h4>
+          <p class="text-sm text-slate-300 mb-8 leading-relaxed">Pour une réponse immédiate ou une intervention urgente, écrivez-nous directement sur WhatsApp :</p>
           <a href="https://wa.me/212660032554" target="_blank" class="w-full flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white py-4 px-6 rounded-xl font-semibold transition text-base shadow-lg shadow-emerald-600/30">
             <i data-lucide="message-circle" class="w-6 h-6"></i>
             <span>Démarrer une discussion WhatsApp</span>
           </a>
         </div>
+
       </div>
     </div>
   </section>
@@ -241,7 +277,7 @@
   </footer>
 
   <!-- Bouton WhatsApp Flottant -->
-  <a href="https://wa.me/212660032554" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl shadow-emerald-500/40 hover:scale-110 transition-transform">
+  <a href="https://wa.me/212660032554" target="_blank" aria-label="WhatsApp" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl shadow-emerald-500/40 hover:scale-110 transition-transform">
     <i data-lucide="message-circle" class="w-7 h-7"></i>
   </a>
 
